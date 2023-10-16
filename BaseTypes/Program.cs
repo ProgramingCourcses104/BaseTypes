@@ -8,13 +8,15 @@
 
             string inputString = Console.ReadLine();
 
-            if(double.TryParse(inputString, out double doubleResult))
+            bool isDouble = double.TryParse(inputString, out double doubleResult);
+
+            if (isDouble)
             {
                 Console.WriteLine("input string : '" + doubleResult + "' is double");
             }
             else
             {
-                Console.WriteLine($"input string : '{doubleResult}' is not double");
+                Console.WriteLine($"input string : '{doubleResult}' is not double is {inputString}");
             }
 
             Console.ReadKey();
