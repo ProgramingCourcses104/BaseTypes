@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomTypes.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomTypes.Models
 {
-    public struct StuctUser
+    public struct StuctUser : IUser
     {
         public string Name;
         public int Age;
@@ -15,6 +16,11 @@ namespace CustomTypes.Models
         {
             Name = name;
             Age = age;
+        }
+
+        public void WriteMessage()
+        {
+            Console.WriteLine($"\nUser name: {Name}\nUser age: {Age}");
         }
     }
 }

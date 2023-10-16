@@ -1,58 +1,49 @@
-﻿
+﻿using CustomTypes.Models;
+
 namespace CustomTypes
 {
     internal class Program
     {
-        class User
-        {
-            public string Name;
-            public int Age;
-
-            public User() { }
-            
-            public User(string name, int age)
-            {
-                Name = name;
-                Age = age;
-            }
-        }
-
-        struct StuctUser
-        {
-            public string Name;
-            public int Age;
-
-            public StuctUser(string name, int age)
-            {
-                Name = name;
-                Age = age;
-            }
-        }
 
         static void Main(string[] args)
         {
-            User user = new User();
+            ExtendedUser user = new ExtendedUser();
 
-            Console.WriteLine("Write name: ");
-            string nameInput = Console.ReadLine();
-
-            if (nameInput != null || nameInput != "") {
-                user.Name = nameInput;
-            }
-
-            Console.WriteLine("Write age: ");
-            string ageInput = Console.ReadLine();
-
-            if (int.TryParse(ageInput, out int ageParsed))
+            while (true)
             {
-                user.Age = ageParsed;
-            }
-            else
-            {
-                Console.WriteLine($"input age : '{ageInput}' is not correct");
+                Console.WriteLine("Write name: ");
+                string nameInput = Console.ReadLine();
+
+                if (nameInput != null && nameInput != "")
+                {
+                    user.Name = nameInput;
+                }
+                else
+                {
+                    Console.WriteLine($"input name : '{nameInput}' is not correct should not be null or empty");
+                    continue;
+                }
+
+                Console.WriteLine("Write age: ");
+                string ageInput = Console.ReadLine();
+
+                if (int.TryParse(ageInput, out int ageParsed))
+                {
+                    user.Age = ageParsed;
+                }
+                else
+                {
+                    Console.WriteLine($"input age : '{ageInput}' is not correct");
+                    continue;
+                }
+
+                if(user.Name != null && user.Age !=0) {
+                    break;
+                }
             }
 
-            Console.WriteLine($"User name: {user}\n User age: {user.Age}");
+            user.WriteMessage();
+            //Console.WriteLine($"\nUser name: {user.Name }\nUser age: {user.Age}");
 
             Console.ReadKey();
         }
