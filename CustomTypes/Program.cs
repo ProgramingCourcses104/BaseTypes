@@ -43,7 +43,6 @@ namespace CustomTypes
             }
 
             user.WriteMessage();
-            //Console.WriteLine($"\nUser name: {user.Name }\nUser age: {user.Age}");
 
             Console.ReadKey();
         }
